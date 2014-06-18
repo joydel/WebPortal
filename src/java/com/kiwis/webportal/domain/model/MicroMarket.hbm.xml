@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2014 9:46:47 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="com.kiwis.webportal.domain.model.MicroMarket" schema="APP" table="MICRO_MARKET">
+    <id name="zipCode" type="string">
+      <column length="10" name="ZIP_CODE"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="radius" type="java.lang.Double">
+      <column name="RADIUS" precision="52" scale="0"/>
+    </property>
+    <property name="areaLength" type="java.lang.Double">
+      <column name="AREA_LENGTH" precision="52" scale="0"/>
+    </property>
+    <property name="areaWidth" type="java.lang.Double">
+      <column name="AREA_WIDTH" precision="52" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

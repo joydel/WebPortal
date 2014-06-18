@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2014 9:46:47 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="com.kiwis.webportal.domain.model.Manufacturer" schema="APP" table="MANUFACTURER">
+    <id name="manufacturerId" type="int">
+      <column name="MANUFACTURER_ID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="name" type="string">
+      <column length="30" name="NAME"/>
+    </property>
+    <property name="addressline1" type="string">
+      <column length="30" name="ADDRESSLINE1"/>
+    </property>
+    <property name="addressline2" type="string">
+      <column length="30" name="ADDRESSLINE2"/>
+    </property>
+    <property name="city" type="string">
+      <column length="25" name="CITY"/>
+    </property>
+    <property name="state" type="string">
+      <column length="2" name="STATE"/>
+    </property>
+    <property name="zip" type="string">
+      <column length="10" name="ZIP"/>
+    </property>
+    <property name="phone" type="string">
+      <column length="12" name="PHONE"/>
+    </property>
+    <property name="fax" type="string">
+      <column length="12" name="FAX"/>
+    </property>
+    <property name="email" type="string">
+      <column length="40" name="EMAIL"/>
+    </property>
+    <property name="rep" type="string">
+      <column length="30" name="REP"/>
+    </property>
+  </class>
+</hibernate-mapping>

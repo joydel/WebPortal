@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+    <display-name>Web Portal</display-name>
+
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>resources.application</param-value>
+    </context-param>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <filter>
+        <filter-name>
+            jersey
+        </filter-name>
+        <filter-class>
+            com.sun.jersey.spi.container.servlet.ServletContainer
+        </filter-class>
+        <init-param>
+            <!--  "Viewable" JSP root is placed in the /WEB-INF/jsp directory.
+            This means that it's not accessible outside of the web app.
+            There's no way to construct a URL that can retrieve it. -->
+            <param-name>
+                com.sun.jersey.config.property.JSPTemplatesBasePath
+            </param-name>
+            <param-value>
+                /WEB-INF/jsp
+            </param-value>
+        </init-param>
+        <init-param>
+            <!-- Declare what file type should be accessible thru Jersey without being interpreted as REST call.
+            Escape img, js, css folders and *.jsp, *.html, *.xhtml from the Jersey filter -->
+            <param-name>
+                com.sun.jersey.config.property.WebPageContentRegex
+            </param-name>
+            <param-value>
+                (/(img|js|css)/?.*)|(/.*\.jsp)|(/WEB-INF/.*\.jsp)|(/WEB-INF/.*\.jspf)|(/.*\.html)|(/favicon\.ico)|(/robots\.txt)
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>
+                com.sun.jersey.api.json.POJOMappingFeature
+            </param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <!-- Allow JAX-RS resources to use @RolesAllowed, @PermitAll and @DenyAll annotations (like EJBs) -->
+            <param-name>
+                com.sun.jersey.spi.container.ResourceFilters
+            </param-name>
+            <param-value>
+                com.sun.jersey.api.container.filter.RolesAllowedResourceFilterFactory
+            </param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>jersey</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <session-config>
+        <session-timeout>120</session-timeout>
+    </session-config>
+
+    <error-page>
+        <error-code>400</error-code>
+        <location>/400.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>401</error-code>
+        <location>/401.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/403.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>405</error-code>
+        <location>/405.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/500.jsp</location>
+    </error-page>
+
+
+    <!-- Security Roles defined with @DeclareRoles -->
+    <!-- That's for later examples....
+    <security-role>
+        <role-name />
+    </security-role>
+    -->
+
+</web-app>

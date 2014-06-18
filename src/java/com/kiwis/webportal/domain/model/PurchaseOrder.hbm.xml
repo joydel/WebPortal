@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2014 9:46:47 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class name="com.kiwis.webportal.domain.model.PurchaseOrder" schema="APP" table="PURCHASE_ORDER">
+    <id name="orderNum" type="int">
+      <column name="ORDER_NUM"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="customerId" type="int">
+      <column name="CUSTOMER_ID" not-null="true"/>
+    </property>
+    <property name="productId" type="int">
+      <column name="PRODUCT_ID" not-null="true"/>
+    </property>
+    <property name="quantity" type="java.lang.Short">
+      <column name="QUANTITY"/>
+    </property>
+    <property name="shippingCost" type="big_decimal">
+      <column name="SHIPPING_COST" precision="12"/>
+    </property>
+    <property name="salesDate" type="date">
+      <column length="10" name="SALES_DATE"/>
+    </property>
+    <property name="shippingDate" type="date">
+      <column length="10" name="SHIPPING_DATE"/>
+    </property>
+    <property name="freightCompany" type="string">
+      <column length="30" name="FREIGHT_COMPANY"/>
+    </property>
+  </class>
+</hibernate-mapping>
