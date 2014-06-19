@@ -244,14 +244,7 @@ public class CustomerJpaController implements Serializable {
         }
     }
 
-    public Customer findCustomer(Integer id) {
-        EntityManager em = getEntityManager();
-        try {
-            return em.find(Customer.class, id);
-        } finally {
-            em.close();
-        }
-    }
+    
 
     public int getCustomerCount() {
         EntityManager em = getEntityManager();
@@ -261,6 +254,18 @@ public class CustomerJpaController implements Serializable {
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
+        } finally {
+            em.close();
+        }
+    }
+    
+    public Customer findByAuthInfo(String name, String password) {
+        EntityManager em = getEntityManager();
+        Customer user = new Customer();
+        try {
+            
+//             return em.find(Customer.class, name); 
+             Query i = em.createQuery("SELECT c FROM Customer c WHERE c.name = :creditLimit and c.creditLimit = :creditLimit");
         } finally {
             em.close();
         }
